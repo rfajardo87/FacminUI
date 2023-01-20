@@ -1,0 +1,91 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "wood",
+            "database": "wood",
+            "username": "root"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "piv",
+            "database": "/Users/drkrt/Documents/Devs/Maderas/db/scripts/N.sqlite"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "phptest",
+            "database": "inv1",
+            "username": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "test",
+            "database": "inventario",
+            "username": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "fecturas",
+            "database": "facturas",
+            "username": "password"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "facturas",
+            "database": "/Users/drkrt/Documents/Devs/Ferreteria/Facturas/api/DB/Facturas.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "facturasDev",
+            "database": "/Users/drkrt/Documents/Devs/Facmin/Dts/File.db"
+        }
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#416d4a",
+        "activityBar.background": "#416d4a",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#363050",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#416d4a",
+        "statusBar.background": "#2e4d34",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#416d4a",
+        "statusBarItem.remoteBackground": "#2e4d34",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#2e4d34",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#2e4d3499",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#2e4d34"
+}

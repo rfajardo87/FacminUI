@@ -1,0 +1,11 @@
+.card-factura {
+    overflow: auto;
+    max-width: 100%;
+    width: 100%;
+
+    .content {
+        overflow-y: scroll;
+        width: 100%;
+        max-width: 100%;
+    }
+}
