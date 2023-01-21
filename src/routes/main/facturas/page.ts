@@ -4,11 +4,6 @@ import { axiosInstance } from '../../../shared/API/instance';
 import { factura } from '../../../shared/API/endpoints/factura';
 import type { Facturas } from '../../../shared/Models/Facturas';
 
-export type facturaDisplay = Pick<
-  Facturas,
-  'serie' | 'folio' | 'emisor' | 'receptor' | 'subtotal' | 'iva' | 'total'
->;
-
 export const loadFacturas = () => {
   try {
     Loading.hourglass('Cargando');

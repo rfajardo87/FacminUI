@@ -13,7 +13,7 @@
 	import { TooltipLocation } from '../../../shared/enums/tooltip';
 	import type { PageData } from './$types';
 
-	import { loadFacturas, facturasDisplay, type facturaDisplay } from './page';
+	import { loadFacturas, facturasDisplay } from './page';
 	export let data: PageData;
 	let value = '';
 	let selected: string = '-1';
@@ -66,7 +66,7 @@
 <Card extraClass={{ card: clsx('w-100', 'mw-100') }}>
 	<Table
 		data={facturasDisplay(data.facturas, value, selected)}
-		keys={['serie', 'folio', 'emisor', 'receptor', 'subtotal', 'iva', 'total']}
+		keys={['serie', 'folio', 'emisor', 'receptor', 'subTotal', 'iva', 'total']}
 		headrz={['Serie', 'Folio', 'Emisor', 'Receptor', 'Subtotal', 'IVA', 'Total']}
 	/>
 </Card>

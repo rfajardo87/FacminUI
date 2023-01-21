@@ -12,7 +12,7 @@ export interface Facturas {
   statusID: string;
   uuidRelacionado: string;
   residencia: string;
-  subtotal: number;
+  subTotal: number;
   iva: number;
   total: number;
   original: number;
