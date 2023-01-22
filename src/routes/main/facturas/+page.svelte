@@ -17,10 +17,11 @@
 	export let data: PageData;
 	let value = '';
 	let selected: string = '-1';
+	let mes = '';
+	let annum = '';
 </script>
 
 <Title title="Facturas" />
-<!-- <Card title="Facturas" extraClass={{text:clsx('d-flex','flex-column','gap-2'), card:clsx('h-100','mh-100','w-100','mw-100','overflow-hidden'), body:clsx('mw-100','w-100','overflow-hidden')}} > -->
 <Card
 	extraClass={{
 		card: clsx('mb-2'),
@@ -37,12 +38,26 @@
 			'gap-3'
 		)}
 	>
-		<Combo bind:selected options={data.status} all={true} size={Size.sm} />
+		<Combo bind:value={selected} options={data.status} all={true} size={Size.sm} id="Status" />
 		<Input
 			bind:value
 			placeholder="Buscar"
 			size={Size.sm}
 			tooltip="Buscar por RFC, homoclave, UUID, serie, folio"
+			tooltipPosition={TooltipLocation.bottom}
+		/>
+		<Combo
+			bind:value={mes}
+			options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ text: `${n}` }))}
+			all={true}
+			size={Size.sm}
+			id="Mes"
+		/>
+		<Input
+			bind:value={annum}
+			placeholder="Año"
+			size={Size.sm}
+			tooltip="Buscar por año"
 			tooltipPosition={TooltipLocation.bottom}
 		/>
 		<Button
@@ -71,7 +86,6 @@
 	/>
 </Card>
 
-<!-- </Card> -->
 <style>
 	@import './page.scss';
 </style>

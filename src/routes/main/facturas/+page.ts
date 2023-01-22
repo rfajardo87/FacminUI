@@ -1,5 +1,8 @@
 import { axiosInstance } from '../../../shared/API/instance';
-import { statusFactura, factura } from '../../../shared/API/endpoints/factura';
+import {
+  statusFactura,
+  facturaPeriodo
+} from '../../../shared/API/endpoints/factura';
 import type { Option } from '../../../shared/structs/components/combo';
 import type { Facturas } from '../../../shared/Models/Facturas';
 import type { StatusFactura } from '../../../shared/Models/StatusFactura';
@@ -13,7 +16,7 @@ export const load = (async () => {
   ];
   try {
     const rsp = await axiosInstance.get(statusFactura);
-    const rspFacturas = await axiosInstance.get(factura);
+    const rspFacturas = await axiosInstance.get(facturaPeriodo('2022', '1'));
     status = rsp.data.data.map((sts: StatusFactura) => ({
       text: sts.status,
       value: sts.id

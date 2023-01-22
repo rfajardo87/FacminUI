@@ -1,13 +1,14 @@
 <script lang="ts">
 	import clsx from 'clsx';
 	import { TooltipLocation } from '../../shared/enums/tooltip';
-	import { Colors, Semaphore } from '../../shared/enums/colors';
+	import type { Colors, Semaphore } from '../../shared/enums/colors';
 	export let icon: string = '';
-	export let color: Colors | Semaphore = Colors.body;
+	export let color: Colors | Semaphore | undefined = undefined;
+	export let extraClass: string = '';
 </script>
 
 {#if icon}
-	<i class={clsx('fa-solid', 'icon', `text-${color}`, `fa-${icon}`)} />
+	<i class={clsx('fa-solid', 'icon', color && `text-${color}`, `fa-${icon}`, extraClass)} />
 {/if}
 
 <style>

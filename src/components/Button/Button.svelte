@@ -11,6 +11,7 @@
 	export let text: string = '';
 	export let icon: string = '';
 	export let type: ButtonType = ButtonType.primary;
+	export let outlined: boolean = false;
 	export let size: Size = Size.default;
 	export let colorIcon: Colors | undefined = undefined;
 	export let tooltipText: string | undefined = undefined;
@@ -19,13 +20,18 @@
 </script>
 
 <button
-	class={clsx('btn', `btn-${type}`, size && `btn-${size}`, extraClass)}
+	type="button"
+	class={clsx('btn', `btn${outlined ? '-outline' : ''}-${type}`, size && `btn-${size}`, extraClass)}
 	on:click
 	data-tooltip={tooltipText}
 	data-tooltip-location={tooltipPosition}
 >
 	{#if icon}
-		<Icon {icon} color={contrastTextColor(typeColors(type), colorIcon)} />
+		<Icon {icon} color={outlined ? colorIcon : contrastTextColor(typeColors(type), colorIcon)} />
 	{/if}
-	{text}</button
->
+	{#if text}
+		{text}
+	{:else}
+		<slot />
+	{/if}
+</button>
