@@ -7,18 +7,34 @@
 	import Input from '../../../components/Form/Text.svelte';
 	import Title from '../../../components/Page/Title.svelte';
 	import { Size } from '../../../shared/enums/gral';
-	import { HeadrzType } from '../../../shared/enums/table';
 	import { ButtonType } from '../../../shared/enums/button';
-	import type { Facturas } from '../../../shared/Models/Facturas';
 	import { TooltipLocation } from '../../../shared/enums/tooltip';
 	import type { PageData } from './$types';
 
-	import { loadFacturas, facturasDisplay } from './page';
+	import { loadFacturas, facturasDisplay, reqFacturas } from './page';
+	import type { Facturas } from 'src/shared/Models/Facturas';
+	import { Notify, Loading } from 'notiflix';
+
 	export let data: PageData;
 	let value = '';
 	let selected: string = '-1';
-	let mes = '';
-	let annum = '';
+	let mes = data.month;
+	let annum = data.year;
+
+	let facturas: Facturas[] = data.facturas;
+
+	const filtrarPeriodo = async () => {
+		Loading.hourglass('Obteniendo facturas');
+		try {
+			const rspFacturas = await reqFacturas(annum, mes);
+			facturas = rspFacturas.facturas;
+			Notify.success('Facturas encontradas');
+		} catch (error) {
+			Notify.failure(`${error}`);
+		} finally {
+			Loading.remove();
+		}
+	};
 </script>
 
 <Title title="Facturas" />
@@ -52,6 +68,7 @@
 			all={true}
 			size={Size.sm}
 			id="Mes"
+			on:change={() => filtrarPeriodo()}
 		/>
 		<Input
 			bind:value={annum}
@@ -59,6 +76,7 @@
 			size={Size.sm}
 			tooltip="Buscar por año"
 			tooltipPosition={TooltipLocation.bottom}
+			on:input={() => filtrarPeriodo()}
 		/>
 		<Button
 			icon={'upload'}
@@ -80,7 +98,7 @@
 </Card>
 <Card extraClass={{ card: clsx('w-100', 'mw-100') }}>
 	<Table
-		data={facturasDisplay(data.facturas, value, selected)}
+		data={facturasDisplay(facturas, value, selected)}
 		keys={['serie', 'folio', 'emisor', 'receptor', 'subTotal', 'iva', 'total']}
 		headrz={['Serie', 'Folio', 'Emisor', 'Receptor', 'Subtotal', 'IVA', 'Total']}
 	/>

@@ -1,7 +1,7 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { Notify } from 'notiflix/build/notiflix-aio';
 import { axiosInstance } from '../../../shared/API/instance';
-import { factura } from '../../../shared/API/endpoints/factura';
+import { factura, facturaPeriodo } from '../../../shared/API/endpoints/factura';
 import type { Facturas } from '../../../shared/Models/Facturas';
 
 export const loadFacturas = () => {
@@ -23,11 +23,10 @@ export const loadFacturas = () => {
 const filterFacturas = (facturas: Facturas[], filterText = '') => {
   if (filterText) {
     const rgx = new RegExp(filterText, 'ig');
-    return facturas.filter(
-      (f: Facturas) =>
-        ![f.emisor, f.receptor, f.serie, f.folio]
-          .map((v) => rgx.test(v))
-          .includes(false)
+    return facturas.filter((f: Facturas) =>
+      [f.emisor, f.receptor, f.serie, f.folio]
+        .map((v) => rgx.test(v))
+        .includes(true)
     );
   }
   return facturas;
@@ -53,4 +52,17 @@ export const facturasDisplay = (
     filters = filterStatus(filters, statusID);
   }
   return filters;
+};
+
+export const reqFacturas = async (year: string, month: string) => {
+  let facturas = [];
+  try {
+    const facutrasList = await axiosInstance.get(facturaPeriodo(year, month));
+    facturas = await facutrasList.data.data;
+  } catch (error) {
+    console.log(error);
+  }
+  return {
+    facturas
+  };
 };
