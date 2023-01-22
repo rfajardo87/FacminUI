@@ -17,6 +17,7 @@
 	export let tooltipText: string | undefined = undefined;
 	export let tooltipPosition: TooltipLocation = TooltipLocation.default;
 	export let extraClass: string | any | undefined = undefined;
+	export let disabled: boolean = false;
 </script>
 
 <button
@@ -25,6 +26,7 @@
 	on:click
 	data-tooltip={tooltipText}
 	data-tooltip-location={tooltipPosition}
+	{disabled}
 >
 	{#if icon}
 		<Icon {icon} color={outlined ? colorIcon : contrastTextColor(typeColors(type), colorIcon)} />

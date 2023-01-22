@@ -88,9 +88,17 @@
 		/>
 		<Button
 			icon="chart-column"
-			type={ButtonType.success}
+			type={ButtonType.info}
 			size={Size.sm}
 			tooltipText="Gráficas"
+			tooltipPosition={TooltipLocation.bottom}
+			disabled
+		/>
+		<Button
+			icon="file-excel"
+			type={ButtonType.success}
+			size={Size.sm}
+			tooltipText="Generar excel"
 			tooltipPosition={TooltipLocation.bottom}
 		/>
 	</div>
