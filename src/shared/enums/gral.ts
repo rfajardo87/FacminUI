@@ -1,5 +1,5 @@
 export enum Size {
-  lg = 'lg',
-  sm = 'sm',
-  default = ''
+	lg = 'lg',
+	sm = 'sm',
+	default = ''
 }

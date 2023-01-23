@@ -1,6 +1,6 @@
 export enum HeadrzType {
-  key,
-  first,
-  list,
-  default = list
+	key,
+	first,
+	list,
+	default = list
 }

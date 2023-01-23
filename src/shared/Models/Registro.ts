@@ -1,4 +1,4 @@
 export interface Registro {
-  creado: Date;
-  actualizado: Date;
+	creado: Date;
+	actualizado: Date;
 }

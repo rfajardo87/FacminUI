@@ -1,6 +1,6 @@
 export interface extraClassCard {
-  card?: string;
-  body?: string;
-  title?: string;
-  text?: string;
+	card?: string;
+	body?: string;
+	title?: string;
+	text?: string;
 }

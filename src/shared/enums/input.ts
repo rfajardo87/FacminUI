@@ -1,6 +1,6 @@
 export enum InputType {
-  text = 'text',
-  number = 'number',
-  datetime = 'datetime',
-  default = text
+	text = 'text',
+	number = 'number',
+	datetime = 'datetime',
+	default = text
 }

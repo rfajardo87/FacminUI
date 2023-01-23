@@ -1,5 +1,5 @@
 <script lang="ts">
-	import clsx  from "clsx";
+	import clsx from 'clsx';
 	import type { NavItem } from 'src/shared/structs/NavItem';
 	import Item from './Item.svelte';
 
