@@ -11,7 +11,7 @@
 	import { TooltipLocation } from '../../../shared/enums/tooltip';
 	import type { PageData } from './$types';
 
-	import { loadFacturas, facturasDisplay, reqFacturas } from './page';
+	import { loadFacturas, facturasDisplay, reqFacturas, reporte } from './page';
 	import type { Facturas } from 'src/shared/Models/Facturas';
 	import { Notify, Loading } from 'notiflix';
 
@@ -54,14 +54,6 @@
 			'gap-3'
 		)}
 	>
-		<Combo bind:value={selected} options={data.status} all={true} size={Size.sm} id="Status" />
-		<Input
-			bind:value
-			placeholder="Buscar"
-			size={Size.sm}
-			tooltip="Buscar por RFC, homoclave, UUID, serie, folio"
-			tooltipPosition={TooltipLocation.bottom}
-		/>
 		<Combo
 			bind:value={mes}
 			options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ text: `${n}` }))}
@@ -78,6 +70,15 @@
 			tooltipPosition={TooltipLocation.bottom}
 			on:input={() => filtrarPeriodo()}
 		/>
+		<Combo bind:value={selected} options={data.status} all={true} size={Size.sm} id="Status" />
+		<Input
+			bind:value
+			placeholder="Buscar"
+			size={Size.sm}
+			tooltip="Buscar por RFC, homoclave, UUID, serie, folio"
+			tooltipPosition={TooltipLocation.bottom}
+		/>
+
 		<Button
 			icon={'upload'}
 			size={Size.sm}
@@ -100,6 +101,7 @@
 			size={Size.sm}
 			tooltipText="Generar excel"
 			tooltipPosition={TooltipLocation.bottom}
+			on:click={() => reporte(annum, mes)}
 		/>
 	</div>
 	<div class="flex-fill">&nbsp;</div>

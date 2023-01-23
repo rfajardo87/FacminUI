@@ -66,3 +66,21 @@ export const reqFacturas = async (year: string, month: string) => {
     facturas
   };
 };
+
+export const reporte = async (year: string, mes: string) => {
+  Loading.hourglass();
+  try {
+    const req = await axiosInstance.post(facturaPeriodo(year, mes));
+    const rsp = await req.data;
+    if (rsp.tipo) {
+      throw new Error(rsp.mensajes);
+    }
+    rsp.mensajes.forEach((mensaje: string) => {
+      Notify.success(mensaje);
+    });
+  } catch (error) {
+    Notify.failure(`${error}`);
+  } finally {
+    Loading.remove();
+  }
+};
