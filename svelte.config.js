@@ -9,6 +9,7 @@ const config = {
 
 	kit: {
 		adapter: adapter({
+			pages: '../Controllers/ClientApp/build',
 			fallback: 'index.html'
 		})
 	}
